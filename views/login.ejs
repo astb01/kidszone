@@ -1,0 +1,89 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= appName%>- Log In</title>
+
+  <% include partials/resources %>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/login.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/font-awesome.min.css" />
+
+  <script src="/javascripts/auth.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap">
+          <p class="text-center"><img src="/images/logo.png" class="logo" /></p>
+          <p class="form-heading"><%= appName %></p>
+          <!--<p class="form-title">
+            Sign In
+          </p>-->
+          <!-- if errors show panel -->
+          <% if (locals.logout) { %>
+          <div class="alert alert-info text-center loggedOutMsg"><b>Successfully logged out</b></div>  
+          <% } %>  
+
+          <% if (locals.registerMsg) {
+              if (registerMsg.length > 0){ %>
+          <div class="alert alert-info text-center"><%= registerMsg %></div>  
+          <%  }
+            } %>  
+
+          <% if (locals.loginErrs) { %>
+          <div class="alert alert-danger errors">
+            
+            <% loginErrs.forEach((errMsg) => { %>
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              <span class="sr-only">Error:</span>
+              <%= errMsg %>
+            <% }) %>
+          </ul>
+          </div>
+          <% } %>  
+          <form class="login" method="POST" action="/login" autocomplete="no">
+              <label for="username" class="sr-only" aria-label="username">Username</label>
+              <input type="text" title="Click to enter username" id="username" name="username" class="form-control" placeholder="Username" required autofocus data-at-login-username="username" />
+              <span class="statusMsg" id="usernameMsg"></span>
+
+              <label for="password" class="sr-only" aria-label="password">Password</label>
+              <input type="password" title="Click to enter password" id="password" name="password" class="form-control" placeholder="Password" required data-at-login-password="password" />
+              <span class="statusMsg" id="passwordMsg"></span>
+              <br/>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" title="Click to sign in">Sign In</button>
+
+              <div class="links">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        Don't have an account? Why not create one <a href="/register" class="registerLink" title="Click to register">here</a>
+                    </div>
+                </div>
+              </div>
+
+              <!--<div class="remember-forgot">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" value="remember-me">&nbsp;<span class="remember">Remember Me</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 forgot-password">
+                    <a href="javascript:void(0);" class="forgot-pass">Forgot Password</a>
+                  </div>
+                </div>
+              </div> -->
+      
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

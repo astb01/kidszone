@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  padding: 50px;
+  font: 14px 'Open Sans', sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.no-children-on-site, .no-minders-on-duty, .parentKey {
+  font-weight: bold;
+}
+
+.buffer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.bufferBig {
+  margin-top: 30px;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.loggedInAsName {
+  font-weight: bold;
+}

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= appName %>- Dashboard</title>
+  <% include partials/resources %>
+</head>
+<body>
+  <% include partials/nav %>
+  
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Dashboard</h1>
+    </div>
+  </div> <!-- /.jumbotron-->
+
+  <div class="buffer"></div>
+
+  <div class="container">
+    <% if (locals.welcomeMsg) { %>
+    <div class="row buffer">
+      <div class="alert alert-info"><%= welcomeMsg %></div>
+    </div>
+    <% } %>
+    
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">Current Status</div>
+          <div class="panel-body">
+            <% if (locals.childrenOnSite) { %>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Child Name</th>
+                  <th>Minder Name</th>
+                  <th>Checked In Time</th>
+                  <th>Check Out Time</th>
+                  <th>Check Out Action</th>
+                </tr>
+              </thead>
+              <tbody>
+            <%  childrenOnSite.forEach((childInfo) => { %>
+              <tr>
+                <td><%= childInfo.child.name %></td>
+                <td><%= childInfo.minder.name %></td>
+                <td><%= childInfo.checkInTime %></td>
+                <td><%= childInfo.checkOutTime %></td>
+                <td><a class="btn btn-primary btn-lg" href="/checkout">Check Out</a></td>
+              </tr>
+            <% })%>
+              </tbody>
+            </table>
+          <% }
+          else { %>
+            <span class="no-children-on-site">There are no children on site.</span>
+          <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+          <div class="panel panel-default">
+              <div class="panel-heading">Minders On Duty</div>
+              <div class="panel-body">
+                  <table class="table table-hover">
+                      <tbody>
+                <% if (locals.minders) {
+                  minders.forEach((minder) => { %>
+              <tr>
+                <td><%= minder.name %></td>
+              </tr>
+              <%  })
+               }
+               else { %>
+                <span class="no-minders-on-duty">There are no minders on site.</span>
+              <% } %>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+  background-color: #eee;
+}
+
+*[role="form"] {
+  max-width: 850px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+  margin-left: 7em;
+  margin-bottom: 1em;
+}
+
+*[role="form"] input {
+  padding: 8px;
+}
+
+.logo {
+  width: 100px;
+  height: 150px;
+}
+
+.tick, .cross, .statusMsg {
+  margin-left: 5px;
+}
+
+.tickImg, .crossImg {
+  height: 20px;
+  width: 20px;
+}
+
+.error, .statusMsg {
+  color: red;
+}

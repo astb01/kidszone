@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= appName%>- Account Creation</title>
+
+  <% include partials/resources %>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/register.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/font-awesome.min.css" />
+
+  <script src="/javascripts/auth.js"></script>
+</head>
+<body>
+  <div class="container">
+    <form class="form-horizontal" autocomplete="no" role="form" action="/register" method="POST">
+      <p class="text-center"><img src="/images/logo.png" title="Kids Zone" alt="Kids Zone" class="logo" /></p>
+
+      <h2>Kids Zone Account Creation</h2>
+
+      <div class="form-group">
+        <label for="firstName" class="col-sm-3 control-label">First Name(s)</label>
+        <div class="col-sm-9">
+          <input type="text" id="firstName" placeholder="First Name(s)" size="30" maxlength="50"  
+          name="firstName" aria-labelledby="firstName" autofocus required title="Enter First Names" 
+          value="<%= form.firstName %>">
+          <span class="statusMsg" id="firstNameMsg"></span>
+          <span class="help-block statusMsg serverError">
+            <% if (locals.registerErrors){
+              if (registerErrors.firstName) {%>
+            <%= registerErrors.firstName.msg %>
+            <%  }
+          }%></span>  
+          <span class="help-block">First Name(s), e.g. John</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+        <div class="col-sm-9">
+          <input type="text" id="lastName" placeholder="Last Name" size="30" maxlength="80" 
+          name="lastName" aria-labelledby="lastName" autofocus required title="Enter Last Name" 
+          value="<%= form.lastName %>">
+          <span class="statusMsg" id="lastNameMsg"></span>
+          <span class="help-block statusMsg serverError">
+            <% if (locals.registerErrors){
+            if (registerErrors.lastName) { %>
+            <%= registerErrors.lastName.msg %>  
+            <% }
+             } %>  
+          </span>
+          <span class="help-block">Last Name, e.g. Doe</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Gender</label>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" name="gender" title="Select Female" value="F">Female
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" name="gender" title="Select Male" value="M">Male
+              </label>
+            </div>
+            <span class="statusMsg" id="genderMsg"></span>
+          </div>
+          <span class="help-block statusMsg serverError">
+              <% if (locals.registerErrors){
+              if (registerErrors.gender) { %>
+                <%= registerErrors.gender.msg %>  
+              <% }
+               } %>  
+          </span>
+          <span class="help-block">Individual's gender</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-9">
+          <input type="text" id="username" placeholder="Username" 
+          name="username" aria-labelledby="username" required title="Enter email address" 
+          value="<%= form.username %>">
+          <span class="statusMsg" id="usernameMsg"></span>
+          <span class="help-block statusMsg serverError">
+              <% if (locals.registerErrors){
+              if (registerErrors.username) { %>
+                <%= registerErrors.username.msg %>  
+              <% }
+               } %>  
+          </span>
+          <span class="help-block">A memorable username to use when accessing Kids Zone. Must be an email address</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" id="password" placeholder="Password" 
+          name="password" aria-labelledby="password" required title="Enter password">
+          <span class="statusMsg" id="passwordMsg"></span>
+          <span class="help-block statusMsg serverError">
+              <% if (locals.registerErrors){
+                if (registerErrors.password) { %>
+                <%= registerErrors.password.msg %>  
+              <% }
+                 } %>  
+          </span>
+          <span class="help-block">A memorable password to use when accessing Kids Zone</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confPassword" class="col-sm-3 control-label">Confirm Password</label>
+        <div class="col-sm-9">
+          <input type="password" id="confPassword" placeholder="Confirm Password" 
+          name="confPassword" aria-labelledby="confPassword" required 
+          title="Enter Password Confirmation">
+          <span class="statusMsg" id="confPasswordMsg"></span>  
+          <span class="help-block statusMsg serverError">
+              <% if (locals.registerErrors){
+              if (registerErrors.confPassword) { %>
+                <%= registerErrors.confPassword.msg %>  
+              <% }
+               } %>  
+          </span>
+          <span class="help-block">Used to confirm the password you entered</span>
+        </div>
+      </div>   
+      
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button class="btn btn-primary btn-block" type="submit" title="Click to register">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

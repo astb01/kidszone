@@ -1,0 +1,6 @@
+{
+  "admin": {
+    "username": "admin"
+  },
+  "dbUrl": "mongodb://localhost:27017/kidszone-db"
+}

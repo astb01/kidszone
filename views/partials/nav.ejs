@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+          <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="pull-left navbar-brand">
+            <img alt="Brand" src="/images/logo.png" class="logo">
+          </a>
+      </div>
+      <!-- Collection of nav links and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/checkin">Child Check In</a></li>
+              <li><a href="/checkout">Child Check Out</a></li>
+          </ul>
+          <% if (locals.session) { 
+                if (session.user) { %>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="/logout" id="logoutLink" title="Click to log out">Log Out</a></li>
+          </ul>
+          <p class="navbar-text navbar-right loggedInAs">You're signed in as <span class="loggedInAsName"><%= session.user.firstName %></span></p>
+          <%    }
+            } %>
+      </div>
+  </div>
+</nav>

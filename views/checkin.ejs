@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= appName %>- Check In Child</title>
+  <% include partials/resources %>
+</head>
+<body>
+  <% include partials/nav %>
+  <div class="container">
+    <div class="row bufferBig">
+      <h2>Check In Child</h2>
+    </div>
+    <div class="row buffer">
+      <div class="col-md-12">
+        <form class="form-horizontal" action="/checkin" method="POST" autocomplete="no">
+            <input type="hidden" name="parentKey" value="<%= parentKey %>" />
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="firstNames">First Name(s)</label>
+              <div class="col-sm-10">
+                <input type="text"  autofocus required id="firstNames" name="firstNames" placeholder="First Names" class="form-control input-xlarge" />
+                <p class="help-block">First Names for the child can only contain characters and hyphens.</p>
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastName">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" required id="lastName" name="lastName" placeholder="Last Name" class="form-control input-xlarge" />
+                    <p class="help-block">Last Name for the child can only contain characters and hyphens.</p>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="minder">Assign to Minder</label>
+                <div class="col-sm-10">
+                  <select required title="Click to select a minder from the drop down list" aria-expanded="false" 
+                    aria-labelledby="minder" class="form-control">
+                    <option value="-1">Please Select</option>
+                    <% minders.forEach((minder) => { %>
+                    <option value='<%= minder.id %>'><%= minder.name %></option>
+                    <% }) %>  
+                  </select>
+                  <p class="help-block">Person responsible for looking after child.</p>
+                </div>
+            </div>
+
+            <h2>Parent/Guardian Secret</h2>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="parentKey">Parent/Guardian Secret</label>
+              <div class="col-sm-10">
+                <p class="form-control-static parentKey"><%= parentKey %></p>
+                <p class="help-block">Secret that the parent/guardian uses when checking out their child. This must not be lost.</p>
+              </div>
+            </div>
+
+            <p>Either a phone number or E-Mail Address is required.</p>
+            
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="contactNo">Phone</label>
+                <div class="col-sm-10">
+                  <input type="tel" id="contactNo" name="contactNo" placeholder="Contact Number" class="form-control input-xlarge" />
+                  <p class="help-block">Contact number to send secret to.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="contactEmail">E-Mail Address</label>
+                <div class="col-sm-10">
+                  <input type="email" id="contactEmail" name="contactEmail" placeholder="Contact E-Mail" class="form-control input-xlarge" />
+                  <p class="help-block">Contact E-Mail Address to send secret to.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary btn-lg">Check In</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
